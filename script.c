@@ -1,23 +1,7 @@
+// import library
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-/*
-1. Print linked list
-    a. Program / source code
-    b. screenshot output
-    c. analisis code
-
-2. Sisip awal Linked List
-    a. Program / Source code
-    b. screenshot output
-    c. Analisis code
-3. Hapus awal linked list
-    a. program / source code
-    b. screenshot output
-    c. Analisis code
-*/
-
 
 // Definisi struktur Node
 typedef struct Node {
@@ -69,7 +53,7 @@ void insertLastNode(Node** head, int value) {
      p = NULL;
  }
 
-// function delete first
+ // function delete first
 void deleteFirstNode(Node** head) {
 
     if(*head == NULL) {
@@ -81,7 +65,7 @@ void deleteFirstNode(Node** head) {
     freeNode(delete);
 }
 
-// C++ Function to remove the last node of the linked list
+// Function to remove the last node of the linked list
 struct Node* deleteLastNode(struct Node* head)
 {
     if (head == NULL)
@@ -106,12 +90,11 @@ struct Node* deleteLastNode(struct Node* head)
     return head;
 }
 
-// Main function
 int main() {
     // Create linked list
-    Node* headOfList = createNode(10, NULL);
-    headOfList = createNode(20, headOfList);
-    headOfList = createNode(30, headOfList);  // headOfList now points to 30 -> 20 -> 10 -> NULL
+    Node* n3 = createNode(30, NULL);
+    Node* n2 = createNode(20, n3);
+    Node* headOfList = createNode(10, n2);  // Set headOfList to the start of the list
 
     printf("Linked List:\n");
     showList(headOfList);
@@ -120,7 +103,7 @@ int main() {
     insertFirstNode(&headOfList, 200);
     printf("Linked List after Insert First:\n");
     showList(headOfList);
-
+    
     // Insert at the end
     insertLastNode(&headOfList, 100);
     printf("Linked List after Insert Last:\n");
@@ -131,10 +114,11 @@ int main() {
     printf("Linked List after deletion first node:\n");
     showList(headOfList);
 
+    // Delete last node from linked list
     deleteLastNode(headOfList);
     printf("Linked List after deletion last node:\n");
     showList(headOfList);
-
+    
     // Clean up remaining nodes
     Node* current = headOfList;
     Node* nextNode;
@@ -143,6 +127,6 @@ int main() {
         freeNode(current);
         current = nextNode;
     }
-
     return 0;
 }
+
